@@ -1,4 +1,4 @@
-import { ADD_TODO, STATE_TODO } from "../actions"
+import { ADD_TODO, STATE_TODO, DELETE_TODO, CLEAN_COMPLETE } from "../actions"
 const initialState = {
     allToDos: [
         {
@@ -21,7 +21,7 @@ const initialState = {
             title: 'Find fix',
             complete: false
         }
-    ]
+    ],
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -32,18 +32,24 @@ export default function rootReducer(state = initialState, action) {
                 allToDos: [...state.allToDos, action.payload],
             }
         case STATE_TODO:
-            const newStateTodo = state.allToDos.map(todo => {
-                if (todo.id === action.payload) {
-                    todo.complete = !todo.complete
-                }
-
-                return todo
-               
-            })
-
+            const newStateTodo = state.allToDos.map(todo => todo.id === action.payload ? { ...todo, complete: todo.complete = !todo.complete } : todo)
             return {
-        
-                allToDos: [...state.allToDos, newStateTodo],
+                ...state,
+                allToDos: newStateTodo,
+            }
+
+        case DELETE_TODO:
+            const newArrayTodo = state.allToDos.filter((todo) => todo.id !== action.payload)
+            return {
+                ...state,
+                allToDos: newArrayTodo
+            }
+
+        case CLEAN_COMPLETE:
+            const cleanComplete = state.allToDos.filter((todo) => !todo.complete)
+            return {
+                ...state,
+                allToDos: cleanComplete
             }
 
         default: return state
