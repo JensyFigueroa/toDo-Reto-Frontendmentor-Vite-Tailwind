@@ -59,7 +59,7 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 allToDos: [...state.allToDos],
-                allToDosCopy: [...state.allToDos],
+                allToDosCopy: state.allToDos,
             }
 
         case ACTIVE_TODOS:
