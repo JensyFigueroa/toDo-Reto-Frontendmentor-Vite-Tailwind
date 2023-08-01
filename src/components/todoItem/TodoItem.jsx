@@ -1,9 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import IcoCross from '../icons/IcoCross'
 import IcoCheck from '../icons/IcoCheck'
-
 import { deleteTodo, stateToDo } from '../../redux/actions/index'
-
 
 const TodoItem = () => {
     const dispatch = useDispatch()
