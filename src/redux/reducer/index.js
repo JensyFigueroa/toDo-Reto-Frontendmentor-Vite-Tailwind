@@ -41,29 +41,28 @@ export default function rootReducer(state = initialState, action) {
             }
 
         case DELETE_TODO:
-            const newArrayTodo = state.allToDos.filter((todo) => todo.id !== action.payload)
+            const newArrayTodo = state.allToDosCopy.filter((todo) => todo.id !== action.payload)
             return {
                 ...state,
                 allToDos: newArrayTodo
             }
 
         case CLEAN_COMPLETE:
-            const cleanComplete = state.allToDos.filter((todo) => !todo.complete)
+            const cleanComplete = state.allToDosCopy.filter((todo) => !todo.complete)
             return {
                 ...state,
                 allToDos: cleanComplete
             }
 
         case GET_TODOS:
-            console.log(state.allToDos)
             return {
                 ...state,
-                allToDos: [...state.allToDos],
-                allToDosCopy: state.allToDos,
+                allToDos: action.payload ? [...state.allToDosCopy] : [...state.allToDos],
+                allToDosCopy: [...state.allToDos],
             }
 
         case ACTIVE_TODOS:
-            const activeTodos = state.allToDos.filter((todo) => !todo.complete)
+            const activeTodos = state.allToDosCopy.filter((todo) => !todo.complete)
             console.log(activeTodos, 'active')
             return {
                 ...state,
@@ -71,11 +70,11 @@ export default function rootReducer(state = initialState, action) {
             }
 
         case COMPLETED_TODOS:
-            const completeTodos = state.allToDos.filter((todo) => todo.complete)
+            const completeTodos = state.allToDosCopy.filter((todo) => todo.complete)
 
             console.log(completeTodos)
 
-            return{
+            return {
                 ...state,
                 allToDos: completeTodos
             }

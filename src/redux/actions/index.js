@@ -30,10 +30,17 @@ export const deleteTodo = (id) => {
     }
  }
 
+ export const getTodos = () => { 
+    return function (dispatch) {
+
+        dispatch({type: GET_TODOS})
+    }
+  }
+
 export const filterTodos = (filter) => { 
     console.log(filter,'actions')
     return function (dispatch) { 
-        if(filter === 'ALL') {dispatch({type:GET_TODOS})}
+        if(filter === 'ALL') {dispatch({type:GET_TODOS, payload:'ALL'})}
         if(filter === 'ACTIVE') {dispatch({type:ACTIVE_TODOS})}
         if(filter === 'COMPLETED') {dispatch({type:COMPLETED_TODOS})}
         
