@@ -1,3 +1,5 @@
+import './utils/darkMode'
+
 import FilterTodo from './components/filterTodo/FilterTodo'
 import Footer from './components/layout/footer/Footer'
 import Header from './components/layout/header/Header'
