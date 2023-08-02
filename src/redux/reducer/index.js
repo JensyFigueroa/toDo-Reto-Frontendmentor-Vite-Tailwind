@@ -1,4 +1,4 @@
-import { ADD_TODO, STATE_TODO, DELETE_TODO, CLEAN_COMPLETE, GET_TODOS, ACTIVE_TODOS, COMPLETED_TODOS } from "../actions"
+import { ADD_TODO, STATE_TODO, DELETE_TODO, CLEAN_COMPLETE, GET_TODOS, ALL_TODOS, ACTIVE_TODOS, COMPLETED_TODOS } from "../actions"
 const initialState = {
     allToDos: [
         {
@@ -44,7 +44,8 @@ export default function rootReducer(state = initialState, action) {
             const newArrayTodo = state.allToDosCopy.filter((todo) => todo.id !== action.payload)
             return {
                 ...state,
-                allToDos: newArrayTodo
+                allToDos: newArrayTodo,
+                allToDosCopy: newArrayTodo,
             }
 
         case CLEAN_COMPLETE:
@@ -57,8 +58,15 @@ export default function rootReducer(state = initialState, action) {
         case GET_TODOS:
             return {
                 ...state,
-                allToDos: action.payload ? [...state.allToDosCopy] : [...state.allToDos],
+                allToDos: [...state.allToDos],
                 allToDosCopy: [...state.allToDos],
+            }
+
+        case ALL_TODOS:
+            console.log(state.allToDosCopy)
+            return {
+                ...state,
+                allToDos:[...state.allToDosCopy]
             }
 
         case ACTIVE_TODOS:
