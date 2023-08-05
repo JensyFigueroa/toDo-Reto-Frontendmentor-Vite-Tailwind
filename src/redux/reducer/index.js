@@ -1,7 +1,7 @@
 import { ADD_TODO, STATE_TODO, DELETE_TODO, CLEAN_COMPLETE, GET_TODOS, ALL_TODOS, ACTIVE_TODOS, COMPLETED_TODOS } from "../actions"
 const initialState = {
     allToDos: [
-        {
+        /* {
             id: 1,
             title: 'Complete course bluueweb',
             complete: true
@@ -20,7 +20,7 @@ const initialState = {
             id: 4,
             title: 'Find fix',
             complete: false
-        }
+        } */
     ],
     allToDosCopy: []
 }

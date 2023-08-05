@@ -1,21 +1,30 @@
 import { useDispatch, useSelector } from "react-redux"
 import IcoCross from '../icons/IcoCross'
 import IcoCheck from '../icons/IcoCheck'
-import { deleteTodo, getTodos, stateToDo } from '../../redux/actions/index'
-import { useEffect } from "react"
+import { deleteTodo, stateToDo } from '../../redux/actions/index'
+import { useEffect, useState } from "react"
 
 const TodoItem = () => {
     const dispatch = useDispatch()
     const allToDos = useSelector((state) => state.allToDos)
 
-    useEffect(() => {
-       dispatch(getTodos())
-    }, [dispatch])
+    //Guardando en el localStorage
+    let setArrTodos = JSON.stringify(allToDos)
+    localStorage.allTodos = `${setArrTodos}`  
+
+    //Obteniendo de localStorage
+    let getArrTodos = localStorage.getItem('allTodos') 
+    const arrTodos = JSON.parse(getArrTodos)
+
+    // useEffect(() => {
+    //     dispatch(getTodos())
+
+    // }, [dispatch])
 
 
     return (
         <>
-            {allToDos.map((todo, i) => (<article key={i} className='flex gap-4 px-4 border-b-2 border-b-gray-400 py-4'>
+            {arrTodos.map((todo, i) => (<article key={i} className='flex gap-4 px-4 border-b-2 border-b-gray-400 py-4'>
                 {/* También se puede hacer con fontawesom */}
                 {/* <button className={`rounded-full border-2 h-5 w-5 flex justify-center items-center ${todo.complete && 'border-green-500'} `} onClick={() => dispatch(stateToDo(todo.id))}>{todo.complete && <i className="fa-solid fa-check text-green-500"></i>}</button> */}
 
