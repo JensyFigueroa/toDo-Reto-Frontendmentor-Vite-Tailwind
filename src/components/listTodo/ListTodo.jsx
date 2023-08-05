@@ -3,7 +3,7 @@ import TodoItem from "../todoItem/TodoItem"
 
 const ListTodo = () => {
     return (
-        <div className="mt-8 bg-white rounded-md dark:bg-gray-800">
+        <div className="mt-8 bg-white rounded-md dark:bg-gray-800 transition-all duration-1000">
 
             <TodoItem />
 

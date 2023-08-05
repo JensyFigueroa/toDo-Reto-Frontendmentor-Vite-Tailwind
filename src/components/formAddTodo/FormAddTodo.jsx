@@ -44,10 +44,10 @@ const FormAddTodo = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className=" bg-white rounded-md overflow-hidden py-4 flex gap-4 items-center px-4 dark:bg-gray-800">
+        <form onSubmit={handleSubmit} className=" bg-white rounded-md overflow-hidden py-4 flex gap-4 items-center px-4 dark:bg-gray-800 transition-all duration-1000">
             {newTodo.title.length > 0 && <button type="submit"><i className="fa-solid fa-circle-plus text-green-500"></i></button>}
           
-            <input className="w-full text-gray-500 outline-none dark:bg-grey-5 dark:bg-gray-800" type="text" placeholder="Create a new todo..." name ='title'onChange={handleChange} value={newTodo.title}/>
+            <input className="w-full text-gray-500 outline-none dark:bg-grey-5 dark:bg-gray-800 transition-all duration-1000" type="text" placeholder="Create a new todo..." name ='title'onChange={handleChange} value={newTodo.title}/>
 
         </form>
 
