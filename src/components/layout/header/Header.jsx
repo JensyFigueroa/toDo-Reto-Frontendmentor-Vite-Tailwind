@@ -2,9 +2,11 @@ import { useEffect, useState } from "react"
 import IcoMoon from "../../icons/IcoMoon"
 import IcoSun from '../../icons/IcoSun'
 
+const initialStateDarkMode = localStorage.getItem('theme') === 'dark' //returns true or false
+
 const Header = () => {
 
-    const [darkMode, setDarkMode] = useState(true)
+    const [darkMode, setDarkMode] = useState(initialStateDarkMode)
 
     const handleChangeToogleTheme = () => {
         setDarkMode(!darkMode)
@@ -13,9 +15,12 @@ const Header = () => {
     useEffect(() => { 
         if (darkMode) {
             document.documentElement.classList.add('dark')
+            // localStorage.setItem('theme', 'dark') // Traditional Method
+            localStorage.theme = 'dark' //this suggests it Tailwind
         }
         else{
             document.documentElement.classList.remove('dark')
+            localStorage.setItem('theme', 'light')
         }
      },[darkMode])
 
