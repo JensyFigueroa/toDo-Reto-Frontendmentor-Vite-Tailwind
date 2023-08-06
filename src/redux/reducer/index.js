@@ -31,7 +31,7 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 allToDos: [...state.allToDos, action.payload],
-                allToDosCopy: [...state.allToDos],
+                allToDosCopy: [...state.allToDos, action.payload],
             }
         case STATE_TODO:
             const newStateTodo = state.allToDos.map(todo => todo.id === action.payload ? { ...todo, complete: todo.complete = !todo.complete } : todo)
@@ -49,10 +49,11 @@ export default function rootReducer(state = initialState, action) {
             }
 
         case CLEAN_COMPLETE:
-            const cleanComplete = state.allToDosCopy.filter((todo) => !todo.complete)
+            const cleanComplete = state.allToDos.filter((todo) => !todo.complete)
             return {
                 ...state,
-                allToDos: cleanComplete
+                allToDos: cleanComplete,
+                allToDosCopy: cleanComplete
             }
 
         case GET_TODOS:
@@ -63,7 +64,6 @@ export default function rootReducer(state = initialState, action) {
             }
 
         case ALL_TODOS:
-            console.log(state.allToDosCopy)
             return {
                 ...state,
                 allToDos:[...state.allToDosCopy]
@@ -78,7 +78,7 @@ export default function rootReducer(state = initialState, action) {
             }
 
         case COMPLETED_TODOS:
-            const completeTodos = state.allToDosCopy.filter((todo) => todo.complete)
+            const completeTodos = state.allToDos.filter((todo) => todo.complete)
 
             console.log(completeTodos)
 
