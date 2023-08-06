@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import IcoCross from '../icons/IcoCross'
 import IcoCheck from '../icons/IcoCheck'
 import { deleteTodo, stateToDo, getTodos } from '../../redux/actions/index'
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 
 const TodoItem = () => {
     const dispatch = useDispatch()

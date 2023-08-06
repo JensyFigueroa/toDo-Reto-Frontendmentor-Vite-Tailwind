@@ -79,8 +79,6 @@ export default function rootReducer(state = initialState, action) {
         case COMPLETED_TODOS:
             const completeTodos = state.allToDosCopy.filter((todo) => todo.complete)
 
-            console.log(completeTodos)
-
             return {
                 ...state,
                 allToDos: completeTodos

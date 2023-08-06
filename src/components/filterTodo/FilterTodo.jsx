@@ -9,7 +9,7 @@ const FilterTodo = () => {
     const [filter, setFilter] = useState('ALL')
 
     return (
-        <section className="container mx-auto mt-8 px-4">
+        <section className="container mx-auto mt-8 px-4 md:max-w-xl">
                 <div className='bg-white rounded-md flex justify-evenly p-4 dark:bg-gray-800 '>
                 <button className={`${filter === 'ALL' && 'text-blue-600'} hover:text-blue-600`} onClick={() => {dispatch(filterTodos('ALL')), setFilter('ALL')}}>All</button>
                 <button className={`${filter === 'ACTIVE' && 'text-blue-600'} hover:text-blue-600`} onClick={() => {dispatch(filterTodos('ACTIVE')), setFilter('ACTIVE')}}>Active</button>
