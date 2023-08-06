@@ -20,7 +20,6 @@ export const stateToDo = (id) => {
 }
 
 export const deleteTodo = (id) => { 
-    console.log(id,'actions')
     return function (dispatch) {
         dispatch({type: DELETE_TODO, payload:id})
     }
@@ -40,7 +39,6 @@ export const deleteTodo = (id) => {
   }
 
 export const filterTodos = (filter) => { 
-    console.log(filter,'actions')
     return function (dispatch) { 
         if(filter === 'ALL') {dispatch({type:ALL_TODOS, payload:'ALL'})}
         if(filter === 'ACTIVE') {dispatch({type:ACTIVE_TODOS})}

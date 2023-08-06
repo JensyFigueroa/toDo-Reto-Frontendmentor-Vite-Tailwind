@@ -1,12 +1,10 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { filterTodos } from "../../redux/actions"
 import { useState } from "react"
 
 const FilterTodo = () => {
 
     const dispatch = useDispatch()
-
-    const allToDos =  useSelector(state => state.allToDos)
 
     const [filter, setFilter] = useState('ALL')
 
