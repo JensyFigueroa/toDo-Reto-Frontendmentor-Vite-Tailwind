@@ -1,25 +1,25 @@
 import { useDispatch, useSelector } from "react-redux"
 import IcoCross from '../icons/IcoCross'
 import IcoCheck from '../icons/IcoCheck'
-import { deleteTodo, stateToDo } from '../../redux/actions/index'
+import { deleteTodo, stateToDo, getTodos } from '../../redux/actions/index'
 import { useEffect, useState } from "react"
 
 const TodoItem = () => {
     const dispatch = useDispatch()
     const allToDos = useSelector((state) => state.allToDos)
 
+    useEffect(() => {
+        dispatch(getTodos())
+
+    }, [dispatch])
+
     //Guardando en el localStorage
     let setArrTodos = JSON.stringify(allToDos)
-    localStorage.allTodos = `${setArrTodos}`  
+    localStorage.allTodos = `${setArrTodos}`
 
     //Obteniendo de localStorage
-    let getArrTodos = localStorage.getItem('allTodos') 
+    let getArrTodos = localStorage.getItem('allTodos')
     const arrTodos = JSON.parse(getArrTodos)
-
-    // useEffect(() => {
-    //     dispatch(getTodos())
-
-    // }, [dispatch])
 
 
     return (

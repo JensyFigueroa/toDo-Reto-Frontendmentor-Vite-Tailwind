@@ -20,6 +20,7 @@ export const stateToDo = (id) => {
 }
 
 export const deleteTodo = (id) => { 
+    console.log(id,'actions')
     return function (dispatch) {
         dispatch({type: DELETE_TODO, payload:id})
     }
