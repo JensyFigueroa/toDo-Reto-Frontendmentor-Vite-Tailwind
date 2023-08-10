@@ -6,6 +6,7 @@ export const CLEAN_COMPLETE = 'CLEAN_COMPLETE'
 export const ALL_TODOS = 'ALL_TODOS'
 export const ACTIVE_TODOS = 'ACTIVE_TODOS'
 export const COMPLETED_TODOS = 'COMPLETED_TODOS'
+export const NEW_ORDER_TODO = 'NEW_ORDER_TODO'
 
 export const add_Todo = (todo) => {
     return function (dispatch){
@@ -45,4 +46,10 @@ export const filterTodos = (filter) => {
         if(filter === 'COMPLETED') {dispatch({type:COMPLETED_TODOS})}
         
      }
+ }
+
+export const reorderList = (list) => { 
+   return function(dispatch) {
+    dispatch({type:NEW_ORDER_TODO, payload:list})
+   }
  }

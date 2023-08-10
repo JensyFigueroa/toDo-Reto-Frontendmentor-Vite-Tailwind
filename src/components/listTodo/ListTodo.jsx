@@ -5,6 +5,8 @@ import { Draggable, Droppable } from "@hello-pangea/dnd";
 import { useEffect } from "react"
 import { getTodos } from '../../redux/actions/index'
 
+import './reorderList'
+
 const ListTodo = () => {
     const dispatch = useDispatch()
     const allToDos = useSelector((state) => state.allToDos)

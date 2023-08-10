@@ -1,4 +1,4 @@
-import { ADD_TODO, STATE_TODO, DELETE_TODO, CLEAN_COMPLETE, GET_TODOS, ALL_TODOS, ACTIVE_TODOS, COMPLETED_TODOS } from "../actions"
+import { ADD_TODO, STATE_TODO, DELETE_TODO, CLEAN_COMPLETE, GET_TODOS, ALL_TODOS, ACTIVE_TODOS, COMPLETED_TODOS, NEW_ORDER_TODO } from "../actions"
 const initialState = {
     allToDos: [
         /* {
@@ -82,6 +82,13 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 allToDos: completeTodos
+            }
+
+        case NEW_ORDER_TODO:
+            return{
+                ...state,
+                allToDos: action.payload,
+                allToDosCopy: action.payload
             }
 
         default: return state
